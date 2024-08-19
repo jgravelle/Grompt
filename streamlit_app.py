@@ -1,7 +1,18 @@
 import streamlit as st
 import os
+import sys
 from dotenv import load_dotenv
-from grompt import rephrase_prompt
+
+# Add the current directory to the Python path
+current_dir = os.path.dirname(os.path.abspath(__file__))
+if current_dir not in sys.path:
+    sys.path.append(current_dir)
+
+try:
+    from grompt import rephrase_prompt
+except ImportError:
+    st.error("Unable to import 'grompt'. Make sure 'grompt.py' is in the same directory as this script.")
+    st.stop()
 
 # Load environment variables from .env file
 load_dotenv()
