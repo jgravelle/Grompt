@@ -18,7 +18,7 @@ Grompt is a Python utility that uses the Groq LLM provider service to re-enginee
 
 1. Clone this repository:
    ```
-   git clone https://github.com/jgravelle/grompt.git
+   git clone https://github.com/yourusername/grompt.git
    cd grompt
    ```
 
@@ -70,6 +70,18 @@ Example:
 python grompt.py "Write a poem about AI" --model llama3-groq-8b-8192-tool-use-preview --temperature 0.8 --max_tokens 500
 ```
 
+### Practical Example
+
+Here's an example of Grompt in action:
+
+```
+C:\ai\Grompt> python Grompt.py "Write an 11th grade level report on quantum physics"
+Rephrased prompt:
+"Compose a comprehensive report on quantum physics, tailored to an 11th-grade reading level, that includes clear explanations of key concepts, historical background, and real-world applications. Ensure the report is engaging, informative, and easy to understand for students at this level. Include relevant examples and diagrams to illustrate complex ideas. The report should be well-structured, with logical flow between sections, and should not exceed 2000 words. Please adhere to academic writing standards and provide a list of credible sources used in the research."
+```
+
+This example demonstrates how Grompt takes a simple, open-ended prompt and transforms it into a detailed, structured prompt that is likely to produce a high-quality response from an LLM.
+
 ### As a Python Module
 
 You can import and use the `rephrase_prompt` function in your Python scripts:
@@ -90,6 +102,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+If you use it, mention "J. Gravelle" in your README.  He's kinda full of himself.
 
 ## Acknowledgments
 
