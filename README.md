@@ -8,6 +8,8 @@ Grompt is a Python utility that uses the Groq LLM provider service to re-enginee
 - Configurable via environment variables or .env file
 - Can be used as a module in other Python scripts or run from the command line
 - Supports various Groq models and customizable parameters
+- Includes a separate Streamlit web app for easy demonstration and testing
+- Streamlit app supports API key input for use in hosted environments
 
 ## Prerequisites
 
@@ -24,13 +26,21 @@ Grompt is a Python utility that uses the Groq LLM provider service to re-enginee
 
 2. Install the required dependencies:
    ```
-   pip install groq python-dotenv
+   pip install -r requirements.txt
    ```
 
 3. Create a `.env` file in the project root directory and add your Groq API key:
    ```
    GROQ_API_KEY=your_api_key_here
    ```
+
+## File Structure
+
+- `grompt.py`: The main Grompt utility file
+- `streamlit_app.py`: A separate Streamlit app for demonstrating Grompt's capabilities
+- `.env`: Configuration file for environment variables
+- `requirements.txt`: List of Python dependencies
+- `README.md`: This file
 
 ## Configuration
 
@@ -51,6 +61,24 @@ GROMPT_DEFAULT_MAX_TOKENS=2048
 ```
 
 ## Usage
+
+### Streamlit Web App
+
+To run the Streamlit web app for an interactive demo:
+
+```
+streamlit run streamlit_app.py
+```
+
+This will start a local web server and open the Grompt demo in your default web browser. You can enter prompts, adjust parameters, and see the optimized results in real-time.
+
+When using the Streamlit app in a hosted environment:
+
+1. Look for the sidebar on the left side of the app.
+2. Enter your Groq API key in the "Enter your GROQ API Key:" field.
+3. Your API key will be used only for the current session and is not stored.
+
+Note: Always keep your API keys confidential and do not share them publicly.
 
 ### As a Command-Line Tool
 
@@ -75,7 +103,7 @@ python grompt.py "Write a poem about AI" --model llama3-groq-8b-8192-tool-use-pr
 Here's an example of Grompt in action:
 
 ```
-C:\ai\Grompt> python Grompt.py "Write an 11th grade level report on quantum physics"
+C:\ai\Grompt> python grompt.py "Write an 11th grade level report on quantum physics"
 Rephrased prompt:
 "Compose a comprehensive report on quantum physics, tailored to an 11th-grade reading level, that includes clear explanations of key concepts, historical background, and real-world applications. Ensure the report is engaging, informative, and easy to understand for students at this level. Include relevant examples and diagrams to illustrate complex ideas. The report should be well-structured, with logical flow between sections, and should not exceed 2000 words. Please adhere to academic writing standards and provide a list of credible sources used in the research."
 ```
@@ -102,7 +130,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-If you use it, mention "J. Gravelle" in your README.  He's kinda full of himself.
+Include the name 'J. Gravelle' somewhere in your code and docs if you use this.  He's full of himself.
 
 ## Acknowledgments
 
