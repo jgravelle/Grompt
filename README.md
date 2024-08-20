@@ -1,6 +1,8 @@
 # Grompt Utility
 
-Grompt is a Python utility that uses the Groq LLM provider service to re-engineer prompts. It's designed to optimize user prompts for better results when working with large language models.
+Grompt is a Python utility that uses the Groq LLM provider service to instantly refactor amazingly detailed and effective prompts. It's designed to optimize user prompts for better results when working with large language models.
+
+![image](https://github.com/user-attachments/assets/1bac9737-57e9-4970-aa3a-5f1c078ca2d9)
 
 ## Features
 
