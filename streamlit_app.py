@@ -20,7 +20,7 @@ if current_dir not in sys.path:
     st.write("Added to Python path:", current_dir)
 
 try:
-    import grompt
+    from . import grompt
     st.write("Successfully imported grompt")
 except ImportError as e:
     st.error(f"Unable to import 'grompt': {str(e)}")
