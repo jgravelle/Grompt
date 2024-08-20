@@ -8,9 +8,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Diagnostic information
-st.write("Current working directory:", os.getcwd())
-st.write("Contents of current directory:", os.listdir())
-st.write("Python path:", sys.path)
+# st.write("Current working directory:", os.getcwd())
+# st.write("Contents of current directory:", os.listdir())
+# st.write("Python path:", sys.path)
 
 # Function to import a module from a file path
 def import_module_from_path(module_name, file_path):
