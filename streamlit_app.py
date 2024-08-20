@@ -38,7 +38,7 @@ st.write("""
 Grompt is a utility that uses Groq's LLM services to instantly optimize and rephrase prompts. 
 Enter your prompt below and see how Grompt can improve it!  Add it to YOUR project in seconds:
 """)
-st.write("""<div style='color:grey;'>rephrased = rephrase_prompt(args.prompt, args.model, args.temperature, args.max_tokens)</div> <br/>""", unsafe_allow_html=True)
+st.write("""<div style='color:grey;'>rephrased = rephrase_prompt("[YOUR PROMPT HERE]")</div> <br/>""", unsafe_allow_html=True)
 
 user_prompt = st.text_area("Enter your prompt:", height=100)
 
@@ -65,7 +65,7 @@ if st.button("Optimize Prompt"):
         # Now import Grompt after setting the API key
         try:
             Grompt = import_module_from_path("Grompt", "Grompt.py")
-            st.write("Successfully imported Grompt")
+            # st.write("Successfully imported Grompt")
         except Exception as e:
             st.error(f"Unable to import 'Grompt': {str(e)}")
             st.stop()
