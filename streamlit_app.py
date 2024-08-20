@@ -31,10 +31,6 @@ GROQ_API_KEY = st.sidebar.text_input("Enter your GROQ API Key:", type="password"
 if not GROQ_API_KEY:
     st.sidebar.warning("Please enter your GROQ API Key to use the app.")
 
-# Add GitHub link to sidebar
-st.sidebar.markdown("---")
-st.sidebar.markdown("[View on GitHub](https://github.com/jgravelle/Grompt)")
-
 # Main app
 st.title("Grompt - Prompt Optimization Tool")
 
@@ -90,6 +86,10 @@ st.sidebar.info(
     "Note: Your API key is used only for this session and is not stored. "
     "Always keep your API keys confidential and do not share them publicly."
 )
+
+# Add GitHub link to sidebar
+st.sidebar.markdown("---")
+st.sidebar.markdown("[View on GitHub](https://github.com/jgravelle/Grompt)")
 
 # Add credit to J. Gravelle
 st.sidebar.markdown("Created by J. Gravelle")
