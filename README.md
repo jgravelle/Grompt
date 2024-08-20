@@ -20,8 +20,8 @@ Grompt is a Python utility that uses the Groq LLM provider service to re-enginee
 
 1. Clone this repository:
    ```
-   git clone https://github.com/yourusername/grompt.git
-   cd grompt
+   git clone https://github.com/jgravelle/Grompt.git
+   cd Grompt
    ```
 
 2. Install the required dependencies:
@@ -34,9 +34,28 @@ Grompt is a Python utility that uses the Groq LLM provider service to re-enginee
    GROQ_API_KEY=your_api_key_here
    ```
 
+## Adding Grompt to Your Project
+
+To use Grompt in your project, you only need to include the `Grompt.py` file. Follow these steps:
+
+1. Copy the `Grompt.py` file into your project directory.
+2. Install the required dependencies:
+   ```
+   pip install groq python-dotenv
+   ```
+3. Import and use the `rephrase_prompt` function in your Python scripts:
+   ```python
+   from Grompt import rephrase_prompt
+
+   original_prompt = "Write a story about a robot"
+   rephrased_prompt = rephrase_prompt(original_prompt)
+
+   print(rephrased_prompt)
+   ```
+
 ## File Structure
 
-- `grompt.py`: The main Grompt utility file
+- `Grompt.py`: The main Grompt utility file
 - `streamlit_app.py`: A separate Streamlit app for demonstrating Grompt's capabilities
 - `.env`: Configuration file for environment variables
 - `requirements.txt`: List of Python dependencies
@@ -85,7 +104,7 @@ Note: Always keep your API keys confidential and do not share them publicly.
 Run Grompt from the command line:
 
 ```
-python grompt.py "Your prompt here" [--model MODEL] [--temperature TEMP] [--max_tokens MAX_TOKENS]
+python Grompt.py "Your prompt here" [--model MODEL] [--temperature TEMP] [--max_tokens MAX_TOKENS]
 ```
 
 Options:
@@ -95,7 +114,7 @@ Options:
 
 Example:
 ```
-python grompt.py "Write a poem about AI" --model llama3-groq-8b-8192-tool-use-preview --temperature 0.8 --max_tokens 500
+python Grompt.py "Write a poem about AI" --model llama3-groq-8b-8192-tool-use-preview --temperature 0.8 --max_tokens 500
 ```
 
 ### Practical Example
@@ -103,25 +122,12 @@ python grompt.py "Write a poem about AI" --model llama3-groq-8b-8192-tool-use-pr
 Here's an example of Grompt in action:
 
 ```
-C:\ai\Grompt> python grompt.py "Write an 11th grade level report on quantum physics"
+C:\ai\Grompt> python Grompt.py "Write an 11th grade level report on quantum physics"
 Rephrased prompt:
 "Compose a comprehensive report on quantum physics, tailored to an 11th-grade reading level, that includes clear explanations of key concepts, historical background, and real-world applications. Ensure the report is engaging, informative, and easy to understand for students at this level. Include relevant examples and diagrams to illustrate complex ideas. The report should be well-structured, with logical flow between sections, and should not exceed 2000 words. Please adhere to academic writing standards and provide a list of credible sources used in the research."
 ```
 
 This example demonstrates how Grompt takes a simple, open-ended prompt and transforms it into a detailed, structured prompt that is likely to produce a high-quality response from an LLM.
-
-### As a Python Module
-
-You can import and use the `rephrase_prompt` function in your Python scripts:
-
-```python
-from grompt import rephrase_prompt
-
-original_prompt = "Write a story about a robot"
-rephrased_prompt = rephrase_prompt(original_prompt)
-
-print(rephrased_prompt)
-```
 
 ## Contributing
 
@@ -130,9 +136,10 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-Include the name 'J. Gravelle' somewhere in your code and docs if you use this.  He's full of himself.
+Include the name 'J. Gravelle' somewhere in your code and docs if you use this. He's full of himself.
 
 ## Acknowledgments
 
 - Thanks to Groq for providing the LLM services used in this utility.
 - This project was inspired by the need for better prompt engineering in AI applications.
+- Created by J. Gravelle, who is indeed full of himself.

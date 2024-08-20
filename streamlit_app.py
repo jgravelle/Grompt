@@ -24,12 +24,16 @@ DEFAULT_MODEL = os.getenv('GROMPT_DEFAULT_MODEL', 'llama3-groq-70b-8192-tool-use
 DEFAULT_TEMPERATURE = float(os.getenv('GROMPT_DEFAULT_TEMPERATURE', '0.5'))
 DEFAULT_MAX_TOKENS = int(os.getenv('GROMPT_DEFAULT_MAX_TOKENS', '1024'))
 
-# Sidebar for API key input
+# Sidebar for API key input and GitHub link
 st.sidebar.title("Configuration")
 GROQ_API_KEY = st.sidebar.text_input("Enter your GROQ API Key:", type="password")
 
 if not GROQ_API_KEY:
     st.sidebar.warning("Please enter your GROQ API Key to use the app.")
+
+# Add GitHub link to sidebar
+st.sidebar.markdown("---")
+st.sidebar.markdown("[View on GitHub](https://github.com/jgravelle/Grompt)")
 
 # Main app
 st.title("Grompt - Prompt Optimization Tool")
@@ -86,3 +90,6 @@ st.sidebar.info(
     "Note: Your API key is used only for this session and is not stored. "
     "Always keep your API keys confidential and do not share them publicly."
 )
+
+# Add credit to J. Gravelle
+st.sidebar.markdown("Created by J. Gravelle")
