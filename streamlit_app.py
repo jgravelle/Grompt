@@ -2,6 +2,10 @@ import streamlit as st
 import os
 import sys
 import importlib.util
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Diagnostic information
 st.write("Current working directory:", os.getcwd())
@@ -14,25 +18,6 @@ def import_module_from_path(module_name, file_path):
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
-
-# Try to import Grompt (note the capital G)
-try:
-    Grompt = import_module_from_path("Grompt", "Grompt.py")
-    st.write("Successfully imported Grompt")
-    
-    # Verify that we can use functions from Grompt
-    if hasattr(Grompt, 'rephrase_prompt'):
-        st.write("Successfully loaded rephrase_prompt function from Grompt")
-    else:
-        st.error("rephrase_prompt function not found in Grompt module")
-        st.stop()
-except Exception as e:
-    st.error(f"Unable to import 'Grompt': {str(e)}")
-    st.stop()
-
-# Load environment variables from .env file
-from dotenv import load_dotenv
-load_dotenv()
 
 # Get configuration from environment variables or use defaults
 DEFAULT_MODEL = os.getenv('GROMPT_DEFAULT_MODEL', 'llama3-groq-70b-8192-tool-use-preview')
@@ -73,9 +58,18 @@ if st.button("Optimize Prompt"):
     if not GROQ_API_KEY:
         st.error("Please enter your GROQ API Key in the sidebar to use the app.")
     elif user_prompt:
+        # Set the API key in the environment for the rephrase_prompt function
+        os.environ['GROQ_API_KEY'] = GROQ_API_KEY
+        
+        # Now import Grompt after setting the API key
+        try:
+            Grompt = import_module_from_path("Grompt", "Grompt.py")
+            st.write("Successfully imported Grompt")
+        except Exception as e:
+            st.error(f"Unable to import 'Grompt': {str(e)}")
+            st.stop()
+        
         with st.spinner("Optimizing your prompt..."):
-            # Set the API key in the environment for the rephrase_prompt function
-            os.environ['GROQ_API_KEY'] = GROQ_API_KEY
             optimized_prompt = Grompt.rephrase_prompt(user_prompt, model, temperature, max_tokens)
         if optimized_prompt:
             st.subheader("Optimized Prompt:")

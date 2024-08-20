@@ -61,6 +61,7 @@ def get_rephrased_user_prompt(user_request):
     """
 
 def rephrase_prompt(prompt, model=DEFAULT_MODEL, temperature=DEFAULT_TEMPERATURE, max_tokens=DEFAULT_MAX_TOKENS):
+    GROQ_API_KEY = os.getenv('GROQ_API_KEY')
     if not GROQ_API_KEY:
         raise ValueError("GROQ_API_KEY must be set in the environment or in a .env file")
 
