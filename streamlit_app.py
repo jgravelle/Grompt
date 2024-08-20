@@ -1,38 +1,37 @@
 import streamlit as st
 import os
 import sys
-from dotenv import load_dotenv
-
-# Add the current directory to the Python path
-current_dir = os.path.dirname(os.path.abspath(__file__))
-if current_dir not in sys.path:
-    sys.path.append(current_dir)
+import importlib.util
 
 # Diagnostic information
 st.write("Current working directory:", os.getcwd())
 st.write("Contents of current directory:", os.listdir())
 st.write("Python path:", sys.path)
 
-# Add the current directory to the Python path
-current_dir = os.path.dirname(os.path.abspath(__file__))
-if current_dir not in sys.path:
-    sys.path.append(current_dir)
-    st.write("Added to Python path:", current_dir)
+# Function to import a module from a file path
+def import_module_from_path(module_name, file_path):
+    spec = importlib.util.spec_from_file_location(module_name, file_path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
+# Try to import Grompt (note the capital G)
 try:
-    from . import grompt
-    st.write("Successfully imported grompt")
-except ImportError as e:
-    st.error(f"Unable to import 'grompt': {str(e)}")
-    st.stop()
-
-try:
-    from grompt import rephrase_prompt
-except ImportError:
-    st.error("Unable to import 'grompt'. Make sure 'grompt.py' is in the same directory as this script.")
+    Grompt = import_module_from_path("Grompt", "Grompt.py")
+    st.write("Successfully imported Grompt")
+    
+    # Verify that we can use functions from Grompt
+    if hasattr(Grompt, 'rephrase_prompt'):
+        st.write("Successfully loaded rephrase_prompt function from Grompt")
+    else:
+        st.error("rephrase_prompt function not found in Grompt module")
+        st.stop()
+except Exception as e:
+    st.error(f"Unable to import 'Grompt': {str(e)}")
     st.stop()
 
 # Load environment variables from .env file
+from dotenv import load_dotenv
 load_dotenv()
 
 # Get configuration from environment variables or use defaults
@@ -77,7 +76,7 @@ if st.button("Optimize Prompt"):
         with st.spinner("Optimizing your prompt..."):
             # Set the API key in the environment for the rephrase_prompt function
             os.environ['GROQ_API_KEY'] = GROQ_API_KEY
-            optimized_prompt = rephrase_prompt(user_prompt, model, temperature, max_tokens)
+            optimized_prompt = Grompt.rephrase_prompt(user_prompt, model, temperature, max_tokens)
         if optimized_prompt:
             st.subheader("Optimized Prompt:")
             st.write(optimized_prompt)
