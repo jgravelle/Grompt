@@ -8,6 +8,24 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 if current_dir not in sys.path:
     sys.path.append(current_dir)
 
+# Diagnostic information
+st.write("Current working directory:", os.getcwd())
+st.write("Contents of current directory:", os.listdir())
+st.write("Python path:", sys.path)
+
+# Add the current directory to the Python path
+current_dir = os.path.dirname(os.path.abspath(__file__))
+if current_dir not in sys.path:
+    sys.path.append(current_dir)
+    st.write("Added to Python path:", current_dir)
+
+try:
+    import grompt
+    st.write("Successfully imported grompt")
+except ImportError as e:
+    st.error(f"Unable to import 'grompt': {str(e)}")
+    st.stop()
+
 try:
     from grompt import rephrase_prompt
 except ImportError:

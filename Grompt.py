@@ -106,5 +106,8 @@ def main():
     else:
         print("Failed to rephrase the prompt.")
 
+def test_function():
+    return "Grompt module imported successfully!"
+
 if __name__ == "__main__":
     main()
