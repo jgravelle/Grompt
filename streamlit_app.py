@@ -29,14 +29,14 @@ st.sidebar.title("Configuration")
 GROQ_API_KEY = st.sidebar.text_input("Enter your GROQ API Key:", type="password")
 
 if not GROQ_API_KEY:
-    st.sidebar.warning("Please enter your GROQ API Key to use the app.")
+    st.sidebar.warning("Please enter your GROQ API Key to use the app.") 
 
 # Main app
-st.title("Grompt - Prompt Optimization Tool")
+st.title("Grompt - Prompt Optimizer")
 
 st.write("""
-Grompt is a utility that uses Groq's LLM services to optimize and rephrase prompts. 
-Enter your prompt below and see how Grompt can improve it!
+Grompt is a utility that uses Groq's LLM services to instantly optimize and rephrase prompts. 
+Enter your prompt below and see how Grompt can improve it!  Add it to YOUR project in seconds!
 """)
 
 user_prompt = st.text_area("Enter your prompt:", height=100)
