@@ -36,8 +36,9 @@ st.title("Grompt - Prompt Optimizer")
 
 st.write("""
 Grompt is a utility that uses Groq's LLM services to instantly optimize and rephrase prompts. 
-Enter your prompt below and see how Grompt can improve it!  Add it to YOUR project in seconds!
+Enter your prompt below and see how Grompt can improve it!  Add it to YOUR project in seconds:
 """)
+st.write("""<div style='color:white;'>rephrased = rephrase_prompt(args.prompt, args.model, args.temperature, args.max_tokens)</div>""", unsafe_allow_html=True)
 
 user_prompt = st.text_area("Enter your prompt:", height=100)
 
