@@ -22,8 +22,7 @@ def get_rephrased_user_prompt(user_request: str) -> str:
     Returns:
         str: A system message for prompt rephrasing.
     """
-    return f"""You are a professional prompt engineer. Your task is to optimize the following user request into a well-structured, clear, and effective prompt. 
-    [Rest of the system message remains unchanged]
+    return f"""You are a professional prompt engineer. Your task is to optimize the user's prompt by making it clearer, more concise, and more effective. Only output the improved prompt without adding any commentary or labels. If the original prompt is already optimized, return it unchanged. 
     User request: "{user_request}"
     Rephrased:
     """
